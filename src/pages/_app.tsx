@@ -1,13 +1,15 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { FC } from 'react';
 import { AppProps } from 'next/app';
-import { ThemeProvider } from 'styled-components';
-import theme from '../theme/theme';
+import GlobalThemeProvider from '../components/GlobalThemeProvider';
+import GlobalStyle from '../components/GlobalStyle';
 
-const App = ({ Component, pageProps }: AppProps) => (
-  <ThemeProvider theme={theme}>
-    <Component {...pageProps} />
-  </ThemeProvider>
+const App: FC<AppProps> = ({ Component, pageProps }) => (
+  <>
+    <GlobalStyle />
+    <GlobalThemeProvider>
+      <Component {...pageProps} />
+    </GlobalThemeProvider>
+  </>
 );
 
 export default App;
