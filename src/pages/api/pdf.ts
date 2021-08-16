@@ -7,7 +7,7 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Invoice PDF</title>
+    <title>QUOTATION PDF</title>
     <style>
       html,
       body {
@@ -196,7 +196,7 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
 </html>
 `;
 
-  pdf.generatePdf({ content: html }, { format: 'A4' }).then((pdfBuffer) => {
+  pdf.generatePdf({ content: html }, { format: 'a4' }).then((pdfBuffer) => {
     res.setHeader('Content-Type', 'application/pdf');
     // res.setHeader('Content-Disposition', 'attachment; filename=quotation.pdf');
     res.status(200).send(pdfBuffer);
