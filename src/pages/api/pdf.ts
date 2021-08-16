@@ -7,7 +7,7 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Invoice PDF from ULSEE360</title>
+    <title>Invoice PDF</title>
     <style>
       html,
       body {
@@ -149,71 +149,62 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
     </style>
   </head>
   <body>
-    <div class="pos-relative mt-5">
-      <span class="inline-block">ULSee Inc.</span>
+    <div class="pos-relative mt-15">
+      <span class="inline-block">卡娃姨股份有限公司</span>
       <span class="title inline-block pos-absolute right bottom">INVOICE</span>
     </div>
     <div class="pos-relative mt-3">
       <span class="inline-block">9F, No. 97, JingYe 1st Rd.</span>
-      <span class="inline-block pos-absolute right">Date {{ date }}</span>
+      <span class="inline-block pos-absolute right">Date SOME_DATE</span>
     </div>
     <div class="pos-relative">
       <span class="inline-block">Zhongshan District, Taipei, Taiwan 10462</span>
       <span class="inline-block pos-absolute right">
-        Invoice No. {{ invoiceNumebr }}
+        Invoice No. IN_NUMBER
       </span>
     </div>
-    <span class="block mt-3">Tel: +886 2 8502 2798</span>
-    <span class="block">Fax: +886 2 8502 5718</span>
+    <span class="block mt-3">Tel: +886 925 296015</span>
     <div class="mt-3">
       <span class="inline-block wd-150px">Bill to</span>
-      <span class="inline-block">{{ customerCompanyName }}</span>
-    </div>
-    <div>
-      <span class="inline-block wd-150px">Tax ID</span>
-      <span class="inline-block">{{ TaxId }}</span>
+      <span class="inline-block">COMPANY_NAME</span>
     </div>
     <div>
       <span class="inline-block wd-150px">Contact person</span>
-      <span class="inline-block">{{ contactPerson }}</span>
+      <span class="inline-block"> 吳瑤 </span>
     </div>
-    <div>
-      <span class="inline-block wd-150px">Contact phone</span>
-      <span class="inline-block">{{ contactPhone }}</span>
-    </div>
-    <div>
-      <span class="inline-block wd-150px">Address</span>
-      <span class="inline-block">{{ customerAddress }}</span>
-    </div>
-    <span class="block mt-5 mb-1 text-right">{{ currency }}</span>
+    <span class="block mt-5 mb-1 text-right"> Currency: NTD </span>
     <table class="billing-content">
       <tbody>
         <tr>
-          <th style="width: 70%" colspan="2">Item</th>
+          <th style="width: 50%" colspan="2">Item</th>
           <th style="width: 10%">Quantity</th>
-          <th style="width: 10%">Unit Price</th>
-          <th style="width: 10%">Total</th>
+          <th style="width: 20%">Unit Price</th>
+          <th style="width: 20%">Total</th>
         </tr>
         <tr>
-          <td style="width: 30%" rowspan="2">{{ itemName }}</td>
-          <td style="width: 40%">{{ startTime }} -</td>
-          <td style="width: 10%" rowspan="2">{{ qty }}</td>
-          <td style="width: 10%" rowspan="2">{{ unitPrice }}</td>
-          <td style="width: 10%" rowspan="2">{{ unitTotal }}</td>
+          <td style="width: 30%"> Nanny & Housekeeper </td>
+          <td style="width: 20%"> /month</td>
+          <td style="width: 10%"> 1 </td>
+          <td style="width: 20%"> 95,000 </td>
+          <td style="width: 20%"> 95,000 </td>
         </tr>
         <tr>
-          <td>{{ endTime }}</td>
+          <td style="width: 30%"> Consultant Service Fee </td>
+          <td style="width: 20%"> - </td>
+          <td style="width: 10%"> 1 </td>
+          <td style="width: 20%"> 18,000 </td>
+          <td style="width: 20%"> 18,000 </td>
         </tr>
       </tbody>
     </table>
     <div class="mt-15 float-right">
       <div class="text-right">
         <span class="inline-block">Subtotal:</span>
-        <span class="inline-block wd-150px text-right with-divider">{{ subtotal }}</span>
+        <span class="inline-block wd-150px text-right with-divider"> 113,000 </span>
       </div>
       <div class="text-right">
         <span class="inline-block">Total:</span>
-        <span class="inline-block wd-150px mt-2 text-right">{{ total }}</span>
+        <span class="inline-block wd-150px mt-2 text-right"> 113,000 </span>
       </div>
     </div>
   </body>
