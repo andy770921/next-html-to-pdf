@@ -32,7 +32,7 @@ const StyledHint = styled.span`
 const IndexPage: FC = () => {
     const [title, setTitle] = useState('QUATATION');
     const [submittedHint, setSubmittedHint] = useState('');
-    const { mutate: getPdf } = useMutation<Blob, { message: string }, { title: string }>(apiGetPdf);
+    const { mutate: getPdf, isLoading } = useMutation<Blob, { message: string }, { title: string }>(apiGetPdf);
 
     const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.currentTarget.value);
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -55,7 +55,9 @@ const IndexPage: FC = () => {
         <StyledFrom onSubmit={handleSubmit}>
             <StyledLabel htmlFor="title-input">Title of the PDF</StyledLabel>
             <input id="title-input" type="text" value={title} onChange={handleTitleChange} />
-            <StyledButton type="submit">Download PDF</StyledButton>
+            <StyledButton type="submit" disabled={isLoading}>
+                Download PDF
+            </StyledButton>
             <StyledHint>{submittedHint}</StyledHint>
         </StyledFrom>
     );
