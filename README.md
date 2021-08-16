@@ -1,4 +1,4 @@
-# Next.js + TypeScript boilerplate
+# Next.js Html-to-Pdf
 
 ## API Demo
 
@@ -22,7 +22,7 @@ https://next-html-to-pdf.vercel.app/api/pdf
 
 ## Deploy to cloud platform
 
-[AWS Amplify](https://aws.amazon.com/tw/amplify/), [Netlify](https://www.netlify.com/with/nextjs/), and [Vercel](https://vercel.com/) support the deployment of `Next.js`
+[Vercel](https://vercel.com/) support the deployment of `Next.js`
 
 ## Notes:
 
@@ -30,14 +30,12 @@ https://next-html-to-pdf.vercel.app/api/pdf
 
 2. Use Aribnb lint rule
 
-3. [Cannot remove](https://nextjs.org/docs/basic-features/typescript#custom-app) `next-env.d.ts`
-
 ## Refs:
 
-1. [Next.js official website](https://nextjs.org/docs/getting-started)
+1. [Origial idea about local server pdf generation](https://www.npmjs.com/package/html-pdf-node-ts)
 
-2. [ESLint official website](https://eslint.org/docs/user-guide/configuring#specifying-parser)
+2. [About Solving Bugs while running CI/CD: Run "PUPPETEER_PRODUCT=firefox npm install" or "PUPPETEER_PRODUCT=firefox yarn install"](https://github.com/vercel/vercel/discussions/4903)
 
-3. [Using ESLint and Prettier in a TypeScript Project](https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project), updated on April 25, 2020
+3. [next-typescript-boilerplate](https://github.com/andy770921/next-typescript-boilerplate)
 
-4. [How to use ESLint with TypeScript](https://khalilstemmler.com/blogs/typescript/eslint-for-typescript/)
+4. [PDF file download using Axios](https://stackoverflow.com/questions/41938718/how-to-download-files-using-axios)

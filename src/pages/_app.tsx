@@ -1,15 +1,29 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { AppProps } from 'next/app';
-import GlobalThemeProvider from '../components/GlobalThemeProvider';
-import GlobalStyle from '../components/GlobalStyle';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import GlobalThemeProvider from '@components/GlobalThemeProvider';
+import GlobalStyle from '@components/GlobalStyle';
+
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            retry: false,
+            refetchOnWindowFocus: false,
+        },
+    },
+});
+
+const ReactQueryProvider: FC<{ children: ReactNode }> = ({ children }) => (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+);
 
 const App: FC<AppProps> = ({ Component, pageProps }) => (
-  <>
-    <GlobalStyle />
-    <GlobalThemeProvider>
-      <Component {...pageProps} />
-    </GlobalThemeProvider>
-  </>
+    <ReactQueryProvider>
+        <GlobalThemeProvider>
+            <GlobalStyle />
+            <Component {...pageProps} />
+        </GlobalThemeProvider>
+    </ReactQueryProvider>
 );
 
 export default App;

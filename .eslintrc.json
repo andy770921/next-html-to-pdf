@@ -13,11 +13,46 @@
             "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
         }
       },
+    "plugins": ["prettier"], 
     "extends": [
-        "airbnb-typescript"
+        "airbnb-typescript",
+        "prettier" 
     ],
     "rules":{
         "react/prop-types": [2, { "skipUndeclared": true }],
-        "react/jsx-props-no-spreading": "off"
-    }
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-uses-react": "off",
+        "jsx-a11y/label-has-associated-control": [ 2, { "assert": "either" }],
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-curly-newline": "off",
+        "react/jsx-closing-bracket-location":"off",
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props":["error", 4], 
+        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/comma-dangle": "off",
+        "jsx-quotes": ["error", "prefer-double"],
+        "arrow-spacing": "error",
+        "object-curly-spacing": ["error", "always"],
+        "key-spacing": ["error", { "afterColon": true }],
+        "import/order": ["error", {
+            "pathGroups": [
+                {
+                    "pattern": "@**/**",
+                    "group": "external",
+                    "position": "after"
+                }
+            ],
+            "pathGroupsExcludedImportTypes": ["builtin"]
+        }],
+        "prettier/prettier": ["error", {
+            "semi": true,
+            "singleQuote": true,
+            "tabWidth": 4,
+            "printWidth": 120,
+            "bracketSpacing": true,
+            "jsxBracketSameLine": true,
+            "trailingComma": "es5"
+        }]
+    },
+    "ignorePatterns":["node_modules/"]
 }
