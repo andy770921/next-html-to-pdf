@@ -146,33 +146,18 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
         right: 0;
         border-bottom: 1px solid;
       }
+
+      .text-center {
+        text-align: center;
+      }
     </style>
   </head>
   <body>
-    <div class="pos-relative mt-15">
-      <span class="inline-block">卡娃姨股份有限公司</span>
-      <span class="title inline-block pos-absolute right bottom">INVOICE</span>
+    <div class="mt-15">
+      <span class="title block text-center">QUOTATION</span>
     </div>
-    <div class="pos-relative mt-3">
-      <span class="inline-block">9F, No. 97, JingYe 1st Rd.</span>
-      <span class="inline-block pos-absolute right">Date SOME_DATE</span>
-    </div>
-    <div class="pos-relative">
-      <span class="inline-block">Zhongshan District, Taipei, Taiwan 10462</span>
-      <span class="inline-block pos-absolute right">
-        Invoice No. IN_NUMBER
-      </span>
-    </div>
-    <span class="block mt-3">Tel: +886 925 296015</span>
-    <div class="mt-3">
-      <span class="inline-block wd-150px">Bill to</span>
-      <span class="inline-block">COMPANY_NAME</span>
-    </div>
-    <div>
-      <span class="inline-block wd-150px">Contact person</span>
-      <span class="inline-block"> 吳瑤 </span>
-    </div>
-    <span class="block mt-5 mb-1 text-right"> Currency: NTD </span>
+    <span class="block mt-5 text-right"> Date: 2021/8/1 </span>
+    <span class="block mt-2 mb-1 text-right"> Currency: NTD </span>
     <table class="billing-content">
       <tbody>
         <tr>
@@ -213,6 +198,7 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
 
   pdf.generatePdf({ content: html }, { format: 'A4' }).then((pdfBuffer) => {
     res.setHeader('Content-Type', 'application/pdf');
+    // res.setHeader('Content-Disposition', 'attachment; filename=quotation.pdf');
     res.status(200).send(pdfBuffer);
   });
 }
