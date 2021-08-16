@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import pdf from 'html-pdf';
+import pdf from 'html-pdf-node-ts';
 
 export default function handler(_req: NextApiRequest, res: NextApiResponse) {
   const html = `
@@ -149,7 +149,6 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
     </style>
   </head>
   <body>
-    <img src="./img/ic_ulsee360.png" class="logo mt-5" alt="ULSEE360" />
     <div class="pos-relative mt-5">
       <span class="inline-block">ULSee Inc.</span>
       <span class="title inline-block pos-absolute right bottom">INVOICE</span>
@@ -220,11 +219,9 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
   </body>
 </html>
 `;
-  pdf.create(html).toBuffer((err, buffer) => {
-    if (err) {
-      res.send(err);
-      return;
-    }
-    res.status(200).send(buffer);
+
+  pdf.generatePdf({ content: html }, { format: 'A4' }).then((pdfBuffer) => {
+    res.setHeader('Content-Type', 'application/pdf');
+    res.status(200).send(pdfBuffer);
   });
 }
