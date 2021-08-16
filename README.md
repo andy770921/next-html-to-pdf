@@ -1,8 +1,8 @@
 # Next.js + TypeScript boilerplate
 
-## Demo
+## API Demo
 
-https://next-typescript-boilerplate.vercel.app/
+https://next-html-to-pdf.vercel.app/api/pdf
 
 ## Installation
 
