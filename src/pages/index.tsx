@@ -20,6 +20,7 @@ const StyledButton = styled.button`
     font-size: 20px;
     margin-top: 32px;
     padding: 20px;
+    background-color: rgb(239, 239, 239);
 `;
 
 const StyledHint = styled.span`
@@ -41,12 +42,9 @@ const IndexPage: FC = () => {
             { title },
             {
                 onSuccess: (data) => {
-                    try {
-                        saveAs(data, `${title}.pdf`);
-                        setSubmittedHint('Get PDF Successfully');
-                    } catch {
-                        setSubmittedHint("Browser doesn't support to download");
-                    }
+                    setSubmittedHint('Processing...');
+                    saveAs(data, `${title}.pdf`);
+                    setSubmittedHint('Get PDF Successfully');
                 },
                 onError: ({ message }) => {
                     setSubmittedHint(`Error: ${message}`);
