@@ -5,22 +5,37 @@
 https://next-html-to-pdf.vercel.app/
 
 ## API
+ 
+### Host Name
 
+https://next-html-to-pdf.vercel.app/
 ###  `/api/pdf`
 
 * **Method:** `GET`
 
-* **Request Query String**: 
-```
-{
-    title: string
-}
-```
+* **Query Parameters:**
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| title | String | Title of the PDF |
+
+* **Request Example:**
+
+`https://[HOST_NAME]/api/pdf?title=abc`  
 
 * **Success Response: 200**
-- Response: Blob
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+|  -  | Buffer | PDF in binary |
 
 * **Error Response: 500**
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| message | String | Error message. |
+
+* **Error Response Example:**
 
 ```json
 { "message": "Unexpected server error" }
