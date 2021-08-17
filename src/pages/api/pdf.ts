@@ -55,20 +55,24 @@ async function generatePdf(file: FileType, options?: OptionsProps, callback?: Ca
         .asCallback(callback);
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method !== 'GET' || !req.query.title) {
-        res.status(400).json({ message: 'Invalid request' });
-        return;
-    }
-    const html = quotationHtmlTemplate({ title: req.query.title as string });
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    return new Promise<void>((resolve) => {
+        if (req.method !== 'GET' || !req.query.title) {
+            res.status(400).json({ message: 'Invalid request' });
+            return;
+        }
+        const html = quotationHtmlTemplate({ title: req.query.title as string });
 
-    generatePdf({ content: html }, { format: 'a4' })
-        .then((pdfBuffer) => {
-            res.setHeader('Content-Type', 'application/pdf');
-            res.setHeader('Content-Disposition', 'attachment; filename=quotation.pdf');
-            res.status(200).send(pdfBuffer);
-        })
-        .catch(() => {
-            res.status(500).json({ message: 'Unexpected error happened' });
-        });
+        generatePdf({ content: html }, { format: 'a4' })
+            .then((pdfBuffer) => {
+                res.setHeader('Content-Type', 'application/pdf');
+                res.setHeader('Content-Disposition', 'attachment; filename=quotation.pdf');
+                res.status(200).send(pdfBuffer);
+                resolve();
+            })
+            .catch(() => {
+                res.status(500).json({ message: 'Unexpected error happened' });
+                resolve();
+            });
+    });
 }
