@@ -72,7 +72,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 resolve();
             })
             .catch(() => {
-                res.status(500).json({ message: 'Unexpected error happened' });
+                res.status(500).json({ message: 'Unexpected server error' });
                 resolve();
             });
     });

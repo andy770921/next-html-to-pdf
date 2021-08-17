@@ -1,9 +1,30 @@
 # Next.js Html-to-Pdf
 
-## API Demo
+## Demo
 
-https://next-html-to-pdf.vercel.app/api/pdf
+https://next-html-to-pdf.vercel.app/
 
+## API
+
+###  `/api/pdf`
+
+* **Method:** `GET`
+
+* **Request Query String**: 
+```
+{
+    title: string
+}
+```
+
+* **Success Response: 200**
+- Response: Blob
+
+* **Error Response: 500**
+
+```json
+{ "message": "Unexpected server error" }
+```
 ## Installation
 
 1. `$ npm install`
