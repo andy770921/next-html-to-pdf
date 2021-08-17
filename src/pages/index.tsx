@@ -1,7 +1,7 @@
 import React, { FC, ChangeEvent, FormEvent, useState } from 'react';
 import styled from 'styled-components';
 import { useMutation } from 'react-query';
-import fileDownload from 'js-file-download';
+import { saveAs } from 'file-saver';
 import { apiGetPdf } from '@api/apis';
 
 const StyledFrom = styled.form`
@@ -41,8 +41,12 @@ const IndexPage: FC = () => {
             { title },
             {
                 onSuccess: (data) => {
-                    fileDownload(data, `${title}.pdf`);
-                    setSubmittedHint('Get PDF Successfully');
+                    try {
+                        saveAs(data, `${title}.pdf`);
+                        setSubmittedHint('Get PDF Successfully');
+                    } catch {
+                        setSubmittedHint("Browser doesn't support to download");
+                    }
                 },
                 onError: ({ message }) => {
                     setSubmittedHint(`Error: ${message}`);
