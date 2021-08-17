@@ -1,5 +1,4 @@
-/* eslint-disable import/prefer-default-export */
-export const quotationHtmlTemplate = ({ title }: { title: string }) => `
+const generateQuotationHtml = ({ title }: { title: string }) => `
     <html lang="en">
         <head>
         <meta charset="UTF-8" />
@@ -192,3 +191,5 @@ export const quotationHtmlTemplate = ({ title }: { title: string }) => `
         </body>
     </html>
 `;
+
+export default generateQuotationHtml;

@@ -3,7 +3,7 @@ import { PDFOptions } from 'puppeteer';
 import { Promise as PromiseBluebird } from 'bluebird';
 import hb from 'handlebars';
 import chromium from 'chrome-aws-lambda';
-import { quotationHtmlTemplate } from '@constants/htmlTemplate';
+import generateQuotationHtml from '@templates/quotation';
 
 type CallBackType = (pdf: any) => void;
 
@@ -62,7 +62,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             resolve();
             return;
         }
-        const html = quotationHtmlTemplate({ title: req.query.title as string });
+        const html = generateQuotationHtml({ title: req.query.title as string });
 
         generatePdf({ content: html }, { format: 'a4' })
             .then((pdfBuffer) => {
