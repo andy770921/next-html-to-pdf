@@ -59,6 +59,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return new Promise<void>((resolve) => {
         if (req.method !== 'GET' || !req.query.title) {
             res.status(400).json({ message: 'Invalid request' });
+            resolve();
             return;
         }
         const html = quotationHtmlTemplate({ title: req.query.title as string });
