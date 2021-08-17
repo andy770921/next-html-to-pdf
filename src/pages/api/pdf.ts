@@ -67,7 +67,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         generatePdf({ content: html }, { format: 'a4' })
             .then((pdfBuffer) => {
                 res.setHeader('Content-Type', 'application/pdf');
-                res.setHeader('Content-Disposition', 'attachment; filename=quotation.pdf');
+                res.setHeader('Content-Disposition', `attachment; filename=${req.query.title}.pdf`);
                 res.status(200).send(pdfBuffer);
                 resolve();
             })
